@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+datarootdir=@datarootdir@
+pkgdatadir=@datadir@/@PACKAGE@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: template client
+Description: template client library
+Version: @WAYLAND_EXTENSION_VERSION@
+Requires: wayland-client
+Cflags: -I${includedir}/wayland-extension
+Libs: -L${libdir}/wayland-extension -ltemplate-client
