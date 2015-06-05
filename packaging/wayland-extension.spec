@@ -32,16 +32,27 @@ Requires:   libwayland-server
 %description -n libwayland-extension-server
 wayland-extension is a protocol for tizen window system.
 
-%package devel
-Summary:	Development files for the Wayland Extension Protocol
+%package -n wayland-extension-client-devel
+Summary:	Client development files for the Wayland Extension Protocol
 Group:		Graphics & UI Framework/Development
 Requires:	libwayland-extension-client = %version
-Requires:	libwayland-extension-server = %version
 
-%description devel
+%description -n wayland-extension-client-devel
 wayland-extension is a protocol for tizen window system.
+
 This package contains all necessary include files and libraries needed
 to develop applications that require these.
+
+%package -n wayland-extension-server-devel
+Summary:	Server development files for the Wayland Extension Protocol
+Group:		Graphics & UI Framework/Development
+Requires:	libwayland-extension-server = %version
+
+%description -n wayland-extension-server-devel
+wayland-extension is a protocol for tizen window system.
+
+This package contains all necessary include files and libraries needed
+to develop a compositor that require these.
 
 %prep
 %setup -q
@@ -72,11 +83,20 @@ make %{?_smp_mflags}
 %defattr(-,root,root)
 %_libdir/wayland-extension/*-server.so.0*
 
-%files devel
+%files -n wayland-extension-client-devel
 %manifest %{name}.manifest
 %defattr(-,root,root)
-%_includedir/wayland-extension/*.h
-%_libdir/wayland-extension/*.so
-%_libdir/pkgconfig/*.pc
+%_includedir/wayland-extension/wayland-extension-version.h
+%_includedir/wayland-extension/*-client-protocol.h
+%_libdir/wayland-extension/*-client.so
+%_libdir/pkgconfig/*-client.pc
+
+%files -n wayland-extension-server-devel
+%manifest %{name}.manifest
+%defattr(-,root,root)
+%_includedir/wayland-extension/wayland-extension-version.h
+%_includedir/wayland-extension/*-server-protocol.h
+%_libdir/wayland-extension/*-server.so
+%_libdir/pkgconfig/*-server.pc
 
 %changelog
