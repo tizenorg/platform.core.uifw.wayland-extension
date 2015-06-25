@@ -6,7 +6,20 @@
 			<arg name="id" type="new_id" interface="tizen_visibility" summary="new visibility object"/>
 			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
 		</request>
+		<request name="get_position">
+			<arg name="id" type="new_id" interface="tizen_position" summary="new position object"/>
+			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+		</request>
 		<request name="activate">
+			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+		</request>
+		<request name="lower">
+			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+		</request>
+		<request name="focus_skip_set">
+			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+		</request>
+		<request name="focus_skip_unset">
 			<arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
 		</request>
 	</interface>
@@ -23,6 +36,18 @@
 
 		<event name="notify">
 			<arg name="visibility" type="uint"/>
+		</event>
+	</interface>
+	
+	<interface name="tizen_position" version="1">
+		<request name="destroy" type="destructor"/>
+		<request name="set">
+			<arg name="x" type="int"/>
+			<arg name="y" type="int"/>
+		</request>
+		<event name="changed">
+			<arg name="x" type="int"/>
+			<arg name="y" type="int"/>
 		</event>
 	</interface>
 
