@@ -35,6 +35,10 @@
       <request name="focus_skip_unset">
          <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
       </request>
+      <request name="role_set">
+         <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+         <arg name="role" type="string"/>
+      </request>
    </interface>
 
    <interface name="tizen_visibility" version="1">
