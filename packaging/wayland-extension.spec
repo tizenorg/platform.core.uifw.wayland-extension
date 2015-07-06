@@ -6,7 +6,6 @@ License:	MIT
 Group:		Graphics & UI Framework/Wayland Window System
 URL:		http://www.tizen.org/
 Source:		%name-%version.tar.xz
-Source1001: 	wayland-extension.manifest
 BuildRequires:	autoconf >= 2.64, automake >= 1.11
 BuildRequires:	libtool >= 2.2
 BuildRequires:	pkgconfig
@@ -56,7 +55,6 @@ to develop a compositor that require these.
 
 %prep
 %setup -q
-cp %{SOURCE1001} .
 
 %build
 export CFLAGS+=" -Wall -Werror"
@@ -72,19 +70,16 @@ make %{?_smp_mflags}
 %postun -n libwayland-extension-server -p /sbin/ldconfig
 
 %files -n libwayland-extension-client
-%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
 %_libdir/wayland-extension/*-client.so.0*
 
 %files -n libwayland-extension-server
-%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
 %_libdir/wayland-extension/*-server.so.0*
 
 %files -n wayland-extension-client-devel
-%manifest %{name}.manifest
 %defattr(-,root,root)
 %_includedir/wayland-extension/wayland-extension-version.h
 %_includedir/wayland-extension/*-client-protocol.h
@@ -92,7 +87,6 @@ make %{?_smp_mflags}
 %_libdir/pkgconfig/*-client.pc
 
 %files -n wayland-extension-server-devel
-%manifest %{name}.manifest
 %defattr(-,root,root)
 %_includedir/wayland-extension/wayland-extension-version.h
 %_includedir/wayland-extension/*-server-protocol.h
