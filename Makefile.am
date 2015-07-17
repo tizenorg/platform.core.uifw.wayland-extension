@@ -112,3 +112,16 @@ protocolinclude_HEADERS += \
 	protocol/text-client-protocol.h
 libtext_server_la_SOURCES = protocol/text-protocol.c
 libtext_client_la_SOURCES = protocol/text-protocol.c
+
+### tizen-extension
+protocol_LTLIBRARIES += \
+	libtizen-extension-server.la \
+	libtizen-extension-client.la
+pkgconfig_DATA += \
+	src/tizen-extension-server.pc \
+	src/tizen-extension-client.pc
+protocolinclude_HEADERS += \
+	protocol/tizen-extension-server-protocol.h \
+	protocol/tizen-extension-client-protocol.h
+libtizen_extension_server_la_SOURCES = protocol/tizen-extension-protocol.c
+libtizen_extension_client_la_SOURCES = protocol/tizen-extension-protocol.c
