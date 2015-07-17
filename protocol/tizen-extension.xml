@@ -34,29 +34,29 @@
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
-    <request name="focus_skip_set">
+    <request name="set_focus_skip">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
-    <request name="focus_skip_unset">
+    <request name="unset_focus_skip">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
-    <request name="role_set">
+    <request name="set_role">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
       <arg name="role" type="string"/>
     </request>
 
     <!-- for conformant -->
-    <request name="conformant_set">
+    <request name="set_conformant">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
-    <request name="conformant_unset">
+    <request name="unset_conformant">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
-    <request name="conformant_get">
+    <request name="get_conformant">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
