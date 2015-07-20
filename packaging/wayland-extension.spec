@@ -72,25 +72,25 @@ make %{?_smp_mflags}
 %files -n libwayland-extension-client
 %license COPYING
 %defattr(-,root,root)
-%_libdir/wayland-extension/*-client.so.0*
+%_libdir/*-client.so.0*
 
 %files -n libwayland-extension-server
 %license COPYING
 %defattr(-,root,root)
-%_libdir/wayland-extension/*-server.so.0*
+%_libdir/*-server.so.0*
 
 %files -n wayland-extension-client-devel
 %defattr(-,root,root)
 %_includedir/wayland-extension/wayland-extension-version.h
 %_includedir/wayland-extension/*-client-protocol.h
-%_libdir/wayland-extension/*-client.so
+%_libdir/*-client.so
 %_libdir/pkgconfig/*-client.pc
 
 %files -n wayland-extension-server-devel
 %defattr(-,root,root)
 %_includedir/wayland-extension/wayland-extension-version.h
 %_includedir/wayland-extension/*-server-protocol.h
-%_libdir/wayland-extension/*-server.so
+%_libdir/*-server.so
 %_libdir/pkgconfig/*-server.pc
 
 %changelog

@@ -1,7 +1,7 @@
 INCLUDES = -I$(top_builddir)/protocol -I$(top_srcdir)/src
 
 pkgconfigdir = $(libdir)/pkgconfig
-protocoldir = $(libdir)/wayland-extension
+protocoldir = $(libdir)
 protocolincludedir = $(includedir)/wayland-extension
 
 pkgconfig_DATA =
