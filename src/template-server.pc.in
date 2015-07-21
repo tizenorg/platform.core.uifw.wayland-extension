@@ -10,4 +10,4 @@ Description: template server library
 Version: @WAYLAND_EXTENSION_VERSION@
 Requires: wayland-server
 Cflags: -I${includedir}/wayland-extension
-Libs: -L${libdir}/wayland-extension -ltemplate-server
+Libs: -L${libdir} -ltemplate-server
