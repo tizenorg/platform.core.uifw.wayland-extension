@@ -33,7 +33,11 @@ protocolinclude_HEADERS += \
 	protocol/xdg-shell-server-protocol.h \
 	protocol/xdg-shell-client-protocol.h
 libxdg_shell_server_la_SOURCES = protocol/xdg-shell-protocol.c
+libxdg_shell_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libxdg_shell_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libxdg_shell_client_la_SOURCES = protocol/xdg-shell-protocol.c
+libxdg_shell_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libxdg_shell_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### input-method
 protocol_LTLIBRARIES += \
@@ -46,7 +50,11 @@ protocolinclude_HEADERS += \
 	protocol/input-method-server-protocol.h \
 	protocol/input-method-client-protocol.h
 libinput_method_server_la_SOURCES = protocol/input-method-protocol.c
+libinput_method_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libinput_method_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libinput_method_client_la_SOURCES = protocol/input-method-protocol.c
+libinput_method_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libinput_method_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### fullscreen-shell
 protocol_LTLIBRARIES += \
@@ -59,7 +67,11 @@ protocolinclude_HEADERS += \
 	protocol/fullscreen-shell-server-protocol.h \
 	protocol/fullscreen-shell-client-protocol.h
 libfullscreen_shell_server_la_SOURCES = protocol/fullscreen-shell-protocol.c
+libfullscreen_shell_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libfullscreen_shell_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libfullscreen_shell_client_la_SOURCES = protocol/fullscreen-shell-protocol.c
+libfullscreen_shell_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libfullscreen_shell_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### scaler
 protocol_LTLIBRARIES += \
@@ -72,7 +84,11 @@ protocolinclude_HEADERS += \
 	protocol/scaler-server-protocol.h \
 	protocol/scaler-client-protocol.h
 libscaler_server_la_SOURCES = protocol/scaler-protocol.c
+libscaler_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libscaler_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libscaler_client_la_SOURCES = protocol/scaler-protocol.c
+libscaler_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libscaler_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### screenshooter
 protocol_LTLIBRARIES += \
@@ -85,7 +101,11 @@ protocolinclude_HEADERS += \
 	protocol/screenshooter-server-protocol.h \
 	protocol/screenshooter-client-protocol.h
 libscreenshooter_server_la_SOURCES = protocol/screenshooter-protocol.c
+libscreenshooter_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libscreenshooter_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libscreenshooter_client_la_SOURCES = protocol/screenshooter-protocol.c
+libscreenshooter_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libscreenshooter_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### text-cursor-position
 protocol_LTLIBRARIES += \
@@ -98,7 +118,11 @@ protocolinclude_HEADERS += \
 	protocol/text-cursor-position-server-protocol.h \
 	protocol/text-cursor-position-client-protocol.h
 libtext_cursor_position_server_la_SOURCES = protocol/text-cursor-position-protocol.c
+libtext_cursor_position_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libtext_cursor_position_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libtext_cursor_position_client_la_SOURCES = protocol/text-cursor-position-protocol.c
+libtext_cursor_position_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libtext_cursor_position_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### text
 protocol_LTLIBRARIES += \
@@ -111,7 +135,11 @@ protocolinclude_HEADERS += \
 	protocol/text-server-protocol.h \
 	protocol/text-client-protocol.h
 libtext_server_la_SOURCES = protocol/text-protocol.c
+libtext_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libtext_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libtext_client_la_SOURCES = protocol/text-protocol.c
+libtext_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libtext_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
 ### tizen-extension
 protocol_LTLIBRARIES += \
@@ -124,4 +152,8 @@ protocolinclude_HEADERS += \
 	protocol/tizen-extension-server-protocol.h \
 	protocol/tizen-extension-client-protocol.h
 libtizen_extension_server_la_SOURCES = protocol/tizen-extension-protocol.c
+libtizen_extension_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libtizen_extension_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
 libtizen_extension_client_la_SOURCES = protocol/tizen-extension-protocol.c
+libtizen_extension_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libtizen_extension_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
