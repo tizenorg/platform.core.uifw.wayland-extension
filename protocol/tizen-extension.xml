@@ -30,6 +30,10 @@
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
+    <request name="raise">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+    </request>
+
     <request name="lower">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
