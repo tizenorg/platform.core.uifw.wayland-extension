@@ -210,6 +210,7 @@
       <entry name="grabbed_already" value="4" summary="The key has been grabbed already."/>
       <entry name="no_permission" value="5" summary="The wl client has no permission to grab the key."/>
       <entry name="no_system_resources" value="6" summary="System resources are insufficient."/>
+      <entry name="invalid_array" value="7" summary="Given array has invalid pairs or data type."/>
     </enum>
 
     <enum name="mode">
@@ -245,11 +246,26 @@
       <arg name="key" type="uint"/>
     </request>
 
+    <request name="set_keygrab_list">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="grab_list" type="array" summary="array of two integer variables pairs each pairs consist of keycode and keygrab mode"/>
+    </request>
+
+    <request name="unset_keygrab_list">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="ungrab_list" type="array" summary="array of integer variables meaning keycode wanted to ungrab"/>
+    </request>
+
     <event name="keygrab_notify">
       <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
       <arg name="key" type="uint"/>
       <arg name="mode" type="uint"/>
       <arg name="error" type="uint"/>
+    </event>
+
+    <event name="keygrab_notify_list">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="grab_result" type="array" summary="array of three integer variables pairs each pairs consist of keycode, keygrab mode and keygrab result"/>
     </event>
   </interface>
 
