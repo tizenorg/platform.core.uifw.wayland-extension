@@ -90,6 +90,23 @@ libscaler_client_la_SOURCES = protocol/scaler-protocol.c
 libscaler_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
 libscaler_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
 
+### transformer
+protocol_LTLIBRARIES += \
+	libtransform-server.la \
+	libtransform-client.la
+pkgconfig_DATA += \
+	src/transform-server.pc \
+	src/transform-client.pc
+protocolinclude_HEADERS += \
+	protocol/transform-server-protocol.h \
+	protocol/transform-client-protocol.h
+libtransform_server_la_SOURCES = protocol/transform-protocol.c
+libtransform_server_la_CFLAGS  = @WAYLAND_SERVER_CFLAGS@
+libtransform_server_la_LIBADD  = @WAYLAND_SERVER_LIBS@
+libtransform_client_la_SOURCES = protocol/transform-protocol.c
+libtransform_client_la_CFLAGS  = @WAYLAND_CLIENT_CFLAGS@
+libtransform_client_la_LIBADD  = @WAYLAND_CLIENT_LIBS@
+
 ### screenshooter
 protocol_LTLIBRARIES += \
 	libscreenshooter-server.la \
