@@ -148,6 +148,13 @@
     <request name="place_subsurface_below_parent">
       <arg name="subsurface" type="object" interface="wl_subsurface"/>
     </request>
+
+    <!-- for opaque_state -->
+    <request name="set_opaque_state">
+      <arg name="surface" type="object" interface="wl_surface" />
+      <arg name="state" type="int"/>
+    </request>
+
   </interface>
 
   <interface name="tizen_visibility" version="1">
