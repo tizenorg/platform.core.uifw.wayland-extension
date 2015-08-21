@@ -197,6 +197,12 @@
       </description>
       <arg name="return_key_type" type="uint"/>
     </request>
+    <request name="set_return_key_disabled">
+      <description summary="set return key to be disabled">
+        Set the return key on the input panel to be disabled.
+      </description>
+      <arg name="return_key_disabled" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in

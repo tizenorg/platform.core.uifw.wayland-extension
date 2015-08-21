@@ -216,6 +216,9 @@
     <event name="return_key_type">
       <arg name="return_key_type" type="uint"/>
     </event>
+    <event name="return_key_disabled">
+      <arg name="return_key_disabled" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_input_method" version="1">
