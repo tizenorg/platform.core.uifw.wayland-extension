@@ -282,6 +282,15 @@
       <arg name="id" type="new_id" interface="tizen_screenmirror" summary="new screenmirror object"/>
       <arg name="output" type="object" interface="wl_output" summary="output object for screenmirror"/>
     </request>
+
+    <event name="format">
+      <description summary="supported format for screenshooter">
+        The tbm format codes match the #defines in tbm_surface.h. The formats actually
+        supported by the compositor will be reported by the format event.
+      </description>
+      <arg name="format" type="uint"/>
+    </event>
+
   </interface>
 
   <interface name="tizen_screenmirror" version="1">
