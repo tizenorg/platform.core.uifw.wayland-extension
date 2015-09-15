@@ -474,4 +474,20 @@
     </enum>
   </interface>
 
+  <interface name="tizen_video" version="1">
+
+    <description summary="interface for tizen-video">
+      Clients can get the video information that the compositor can handle from this interface.
+    </description>
+
+    <event name="format">
+      <description summary="supported format for video">
+        The tbm format codes match the #defines in tbm_surface.h. The formats actually
+        supported by the compositor will be reported by the format event.
+      </description>
+      <arg name="format" type="uint"/>
+    </event>
+
+  </interface>
+
 </protocol>
