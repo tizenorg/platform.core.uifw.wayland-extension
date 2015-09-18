@@ -361,6 +361,15 @@
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="direction" type="uint"/>
     </event>
+    <event name="selection_region">
+      <description summary="selection region">
+        Notify when the input panels ask to select the characters
+        from the start cursor position to the end cursor position.
+      </description>
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="start" type="int"/>
+      <arg name="end" type="int"/>
+    </event>
   </interface>
 
   <interface name="wl_text_input_manager" version="1">
