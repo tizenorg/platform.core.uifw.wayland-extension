@@ -203,6 +203,13 @@
       </description>
       <arg name="return_key_disabled" type="uint"/>
     </request>
+    <request name="set_input_panel_data">
+      <description summary="set input panel data">
+        Set the input panel-specific data to deliver to the input panel.
+      </description>
+      <arg name="input_panel_data" type="string"/>
+      <arg name="input_panel_length" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in

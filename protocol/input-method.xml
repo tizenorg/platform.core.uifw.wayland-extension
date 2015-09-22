@@ -224,6 +224,10 @@
     <event name="return_key_disabled">
       <arg name="return_key_disabled" type="uint"/>
     </event>
+    <event name="input_panel_data">
+      <arg name="input_panel_data" type="string"/>
+      <arg name="input_panel_data_length" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_input_method" version="1">
