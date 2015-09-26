@@ -377,6 +377,13 @@
       <arg name="start" type="int"/>
       <arg name="end" type="int"/>
     </event>
+    <event name="private_command">
+      <description summary="private command">
+        Notify when the input panels ask to send private command
+      </description>
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="command" type="string"/>
+    </event>
   </interface>
 
   <interface name="wl_text_input_manager" version="1">

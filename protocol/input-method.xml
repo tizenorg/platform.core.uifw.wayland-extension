@@ -190,6 +190,10 @@
       <arg name="start" type="int"/>
       <arg name="end" type="int"/>
     </request>
+    <request name="private_command">
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="command" type="string"/>
+    </request>
     <event name="surrounding_text">
       <description summary="surrounding text event">
         The plain surrounding text around the input position. Cursor is the
