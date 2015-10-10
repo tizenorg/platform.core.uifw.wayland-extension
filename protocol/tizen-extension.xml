@@ -397,13 +397,75 @@
       Clients can get the video information that the compositor can handle from this interface.
     </description>
 
+    <enum name="source_type">
+      <entry name="wl_buffer" value="0x000"/>
+      <entry name="user_base" value="0x100"/>
+    </enum>
+
+    <event name="source_type">
+      <description summary="supported source types for video">
+        A vendor can define various source types based on TIZNE_VIDEO_SOURCE_TYPE_USER_BASE.
+      </description>
+      <arg name="source_type" type="uint"/>
+    </event>
+
     <event name="format">
-      <description summary="supported format for video">
-        The tbm format codes match the #defines in tbm_surface.h. The formats actually
-        supported by the compositor will be reported by the format event.
+      <description summary="supported formats for video">
+        The tbm format codes match the #defines in tbm_surface.h. The 'format' event will be
+        sent by calling tizen_video_query_info().
       </description>
       <arg name="format" type="uint"/>
     </event>
+
+    <event name="size">
+      <description summary="supported format for video">
+        The size which a hardware device can handle for each source_type. If a buffer's width
+        is multiple value of "preferred_align_w", then a hardware device will use the buffer
+        directly. Otherwise, the buffer will be copied to a newly allocated and aligned buffer
+        for a hardware device to handle it. The 'size' event will be sent by calling
+        tizen_video_query_info().
+      </description>
+      <arg name="min_w" type="int"/>
+      <arg name="min_h" type="int"/>
+      <arg name="max_w" type="int"/>
+      <arg name="max_h" type="int"/>
+      <arg name="preferred_align_w" type="int"/>
+    </event>
+
+    <event name="attribute">
+      <description summary="supported attributes for video">
+        The attributes which a compositor offers for each source_type. The 'attribute' event
+        will be sent by calling tizen_video_query_info().
+      </description>
+      <arg name="name" type="string"/>
+      <arg name="value" type="int"/>
+    </event>
+
+    <request name="query_info">
+      <arg name="source_type" type="uint" />
+    </request>
+
+    <request name="get_object">
+      <arg name="id" type="new_id" interface="tizen_video_object" summary="new video object"/>
+      <arg name="surface" type="object" interface="wl_surface" />
+      <arg name="source_type" type="uint" />
+    </request>
+
+  </interface>
+
+  <interface name="tizen_video_object" version="1">
+
+    <event name="attribute">
+      <arg name="name" type="string"/>
+      <arg name="value" type="int"/>
+    </event>
+
+    <request name="destroy" type="destructor"/>
+
+    <request name="set_attribute">
+      <arg name="name" type="string"/>
+      <arg name="value" type="int"/>
+    </request>
 
   </interface>
 
