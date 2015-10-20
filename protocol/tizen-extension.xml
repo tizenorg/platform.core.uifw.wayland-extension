@@ -55,6 +55,23 @@
       <arg name="role" type="string"/>
     </request>
 
+    <enum name="win_type">
+      <entry name="none" value="0"/>
+      <entry name="toplevel" value="1"/>
+      <entry name="fullscreen" value="2"/>
+      <entry name="maximized" value="3"/>
+      <entry name="transient" value="4"/>
+      <entry name="menu" value="5"/>
+      <entry name="dnd" value="6"/>
+      <entry name="custom" value="7"/>
+      <entry name="notification" value="8"/>
+    </enum>
+
+    <request name="set_type">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="win_type" type="uint" />
+    </request>
+
     <!-- for conformant -->
     <request name="set_conformant">
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
