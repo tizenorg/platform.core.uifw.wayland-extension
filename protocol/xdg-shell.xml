@@ -45,12 +45,25 @@
 	they implement using static_assert to ensure the protocol and
 	implementation versions match.
       </description>
-      <entry name="current" value="4" summary="Always the latest version"/>
+      <entry name="current" value="5" summary="Always the latest version"/>
     </enum>
 
     <enum name="error">
       <entry name="role" value="0" summary="given wl_surface has another role"/>
+      <entry name="defunct_surfaces" value="1" summary="xdg_shell was destroyed before children"/>
+      <entry name="not_the_topmost_popup" value="2" summary="the client tried to map or destroy a non-topmost popup"/>
+      <entry name="invalid_popup_parent" value="3" summary="the client specified an invalid popup parent surface"/>
     </enum>
+
+    <request name="destroy" type="destructor">
+      <description summary="destroy xdg_shell">
+        Destroy this xdg_shell object.
+
+        Destroying a bound xdg_shell object while there are surfaces
+        still alive created by this xdg_shell object instance is illegal
+        and will result in a protocol error.
+      </description>
+    </request>
 
     <request name="use_unstable_version">
       <description summary="enable use of this unstable version">
@@ -152,7 +165,7 @@
 	unmapped if the parent is unmapped too. They should not appear
 	on task bars and alt+tab.
       </description>
-      <arg name="parent" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="parent" type="object" interface="xdg_surface" allow-null="true"/>
     </request>
 
     <request name="set_title">
@@ -362,8 +375,6 @@
 
     <request name="set_minimized" />
 
-    <request name="needs_attention" />
-
     <event name="close">
       <description summary="surface wants to be closed">
         The close event is sent by the compositor when the user
@@ -417,7 +428,6 @@
 	that is, when the users clicks a surface that doesn't belong
 	to the client owning the popup surface.
       </description>
-      <arg name="serial" type="uint" summary="serial of the implicit grab on the pointer"/>
     </event>
 
   </interface>
