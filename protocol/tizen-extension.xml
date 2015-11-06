@@ -283,6 +283,8 @@
        summary="mode to get a key grab exclusively, overridably regardless of the order in the surface stack"/>
       <entry name="exclusive" value="4"
        summary="mode to get a key grab exclusively regardless of the order in surface stack"/>
+      <entry name="registered" value="5"
+       summary="mode to get a key grab register following the order in surface stack"/>
     </enum>
 
     <request name="set_keygrab">
