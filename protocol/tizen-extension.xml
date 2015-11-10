@@ -284,7 +284,7 @@
       <entry name="exclusive" value="4"
        summary="mode to get a key grab exclusively regardless of the order in surface stack"/>
       <entry name="registered" value="5"
-       summary="mode to get a key grab only when a requesting surface is on top among the registering surfaces for the key""/>
+       summary="mode to get a key grab only when a requesting surface is on top among the registering surfaces for the key"/>
     </enum>
 
     <request name="set_keygrab">
