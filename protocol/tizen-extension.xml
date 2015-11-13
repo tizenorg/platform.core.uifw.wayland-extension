@@ -426,4 +426,26 @@
 
   </interface>
 
+  <interface name="tizen_embedded_compositor" version="1">
+
+    <description summary="global embedded compositor object">
+      The global obejct. Wayland has 3 type of compositor, embedded compositor is one of them.
+      But tizen application is sendboxing by smack, then a application not allow commutication to other application by socket.
+      So system or session compositor create socket and send to embedded compostior.
+    </description>
+
+    <request name="get_socket">
+      <description summary="create new socket">
+        The get_socket request ask the server to create socket and emit socket event.
+      </description>
+    </request>
+
+    <event name="socket">
+      <description summary="socket fd">
+        Sent immediately after get_socket request
+      </description>
+      <arg name="sock_fd" type="fd"/>
+    </event>
+
+  </interface>
 </protocol>
