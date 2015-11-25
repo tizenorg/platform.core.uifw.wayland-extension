@@ -416,6 +416,11 @@
       Clients can get the video information that the compositor can handle from this interface.
     </description>
 
+    <enum name="error">
+      <entry name="none" value="0"/>
+      <entry name="object_exists" value="1"/>
+    </enum>
+
     <event name="format">
       <description summary="supported format for video">
         The tbm format codes match the #defines in tbm_surface.h. The formats actually
@@ -423,6 +428,34 @@
       </description>
       <arg name="format" type="uint"/>
     </event>
+
+    <request name="get_object">
+      <arg name="id" type="new_id" interface="tizen_video_object" />
+      <arg name="surface" type="object" interface="wl_surface" />
+    </request>
+
+  </interface>
+
+  <interface name="tizen_video_object" version="1">
+
+    <event name="attribute">
+      <arg name="name" type="string"/>
+      <arg name="value" type="uint"/>
+    </event>
+
+    <event name="size">
+      <arg name="min_w" type="int"/>
+      <arg name="min_h" type="int"/>
+      <arg name="max_w" type="int"/>
+      <arg name="max_h" type="int"/>
+      <arg name="prefer_align" type="int"/>
+    </event>
+
+    <request name="destroy" type="destructor"/>
+    <request name="set_attribute">
+      <arg name="name" type="string"/>
+      <arg name="value" type="int"/>
+    </request>
 
   </interface>
 
