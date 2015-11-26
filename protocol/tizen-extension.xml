@@ -184,6 +184,12 @@
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
     </request>
 
+    <event name="iconify_state_changed">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="iconified" type="uint"/>
+      <arg name="force" type="uint"/>
+    </event>
+
     <!-- for aux_hint -->
     <request name="add_aux_hint">
       <arg name="surface" type="object" interface="wl_surface"/>
