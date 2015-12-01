@@ -25,7 +25,6 @@
     THIS SOFTWARE.
   </copyright>
 
-
   <interface name="wl_input_method_context" version="1">
     <description summary="input method context">
       Corresponds to a text model on input method side. An input method context
@@ -75,10 +74,10 @@
     </request>
     <request name="preedit_styling">
       <description summary="pre-edit styling">
-        Sets styling information on composing text. The style is applied for
-	length in bytes from index relative to the beginning of
-	the composing text (as byte offset). Multiple styles can
-	be applied to a composing text.
+        Set styling information on composing text. The style is applied for
+        length in bytes from index relative to the beginning of the composing
+        text (as byte offset). Multiple styles can be applied to a composing
+        text.
 
         This request should be sent before sending preedit_string request.
       </description>
@@ -88,7 +87,7 @@
     </request>
     <request name="preedit_cursor">
       <description summary="pre-edit cursor">
-        Sets the cursor position inside the composing text (as byte offset)
+        Set the cursor position inside the composing text (as byte offset)
         relative to the start of the composing text.
 
         When index is negative no cursor should be displayed.
@@ -99,8 +98,6 @@
     </request>
     <request name="delete_surrounding_text">
       <description summary="delete text">
-
-
         This request will be handled on text_input side as part of a directly
         following commit_string request.
       </description>
@@ -109,7 +106,7 @@
     </request>
     <request name="cursor_position">
       <description summary="set cursor to a new position">
-        Sets the cursor and anchor to a new position. Index is the new cursor
+        Set the cursor and anchor to a new position. Index is the new cursor
         position in bytes (when >= 0 relative to the end of inserted text
         else relative to beginning of inserted text). Anchor is the new anchor
         position in bytes (when >= 0 relative to the end of inserted text, else
@@ -276,7 +273,7 @@
 
     <request name="set_toplevel">
       <description summary="set the surface type as a keyboard">
-	A keyboard surface is only shown, when a text model is active
+        A keyboard surface is only shown, when a text model is active.
       </description>
       <arg name="output" type="object" interface="wl_output"/>
       <arg name="position" type="uint"/>

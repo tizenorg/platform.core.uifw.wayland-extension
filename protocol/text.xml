@@ -28,7 +28,7 @@
 
   <interface name="wl_text_input" version="1">
     <description summary="text input">
-      An object used for text input. Adds support for text input and input 
+      An object used for text input. Adds support for text input and input
       methods to applications. A text-input object is created from a
       wl_text_input_manager and corresponds typically to a text entry in an
       application.
@@ -50,7 +50,7 @@
     </description>
     <request name="activate">
       <description summary="request activation">
-        Requests the text-input object to be activated (typically when the 
+        Requests the text-input object to be activated (typically when the
         text entry gets focus).
         The seat argument is a wl_seat which maintains the focus for this
         activation. The surface argument is a wl_surface assigned to the
@@ -86,8 +86,8 @@
       </description>
     </request>
     <request name="set_surrounding_text">
-      <description summary="sets the surrounding text">
-        Sets the plain surrounding text around the input position. Text is
+      <description summary="set the surrounding text">
+        Set the plain surrounding text around the input position. Text is
         UTF-8 encoded. Cursor is the byte offset within the
         surrounding text. Anchor is the byte offset of the
         selection anchor within the surrounding text. If there is no selected
@@ -142,7 +142,7 @@
     </enum>
     <request name="set_content_type">
       <description summary="set content purpose and hint">
-        Sets the content purpose and content hint. While the purpose is the
+        Set the content purpose and content hint. While the purpose is the
         basic purpose of an input field, the hint flags allow to modify some
         of the behavior.
 
@@ -160,14 +160,14 @@
       <arg name="height" type="int"/>
     </request>
     <request name="set_preferred_language">
-      <description summary="sets preferred language">
-        Sets a specific language. This allows for example a virtual keyboard to
-        show a language specific layout. The "language" argument is a RFC-3066 
-	format language tag.
+      <description summary="set preferred language">
+        Set a specific language. This allows for example a virtual keyboard to
+        show a language specific layout. The "language" argument is a RFC-3066
+        format language tag.
 
-	It could be used for example in a word processor to indicate language of
-	currently edited document or in an instant message application which tracks
-	languages of contacts.
+        It could be used for example in a word processor to indicate language of
+        currently edited document or in an instant message application which tracks
+        languages of contacts.
       </description>
       <arg name="language" type="string"/>
     </request>
@@ -193,7 +193,7 @@
     </enum>
     <request name="set_return_key_type">
       <description summary="set return key type">
-        Sets the return key type.
+        Set the return key type.
       </description>
       <arg name="return_key_type" type="uint"/>
     </request>
@@ -249,10 +249,10 @@
         be removed.
 
         The commit text can be used to replace the preedit text on reset
-	(for example on unfocus).
+        (for example on unfocus).
 
-	The text input should also handle all preedit_style and preedit_cursor
-	events occurring directly before preedit_string.
+        The text input should also handle all preedit_style and preedit_cursor
+        events occurring directly before preedit_string.
       </description>
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="text" type="string"/>
@@ -270,11 +270,10 @@
     </enum>
     <event name="preedit_styling">
       <description summary="pre-edit styling">
-        Sets styling information on composing text. The style is applied for
-	length bytes from index relative to the beginning of the composing 
-	text (as byte offset). Multiple styles can
-        be applied to a composing text by sending multiple preedit_styling
-        events.
+        Set styling information on composing text. The style is applied for
+        length bytes from index relative to the beginning of the composing
+        text (as byte offset). Multiple styles can be applied to a composing
+        text by sending multiple preedit_styling events.
 
         This event is handled as part of a following preedit_string event.
       </description>
@@ -284,7 +283,7 @@
     </event>
     <event name="preedit_cursor">
       <description summary="pre-edit cursor">
-        Sets the cursor position inside the composing text (as byte
+        Set the cursor position inside the composing text (as byte
         offset) relative to the start of the composing text. When index is a
         negative number no cursor is shown.
 
@@ -346,7 +345,7 @@
     </event>
     <event name="language">
       <description summary="language">
-        Sets the language of the input text. The "language" argument is a RFC-3066 
+        Set the language of the input text. The "language" argument is a RFC-3066
         format language tag.
       </description>
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
@@ -359,7 +358,7 @@
     </enum>
     <event name="text_direction">
       <description summary="text direction">
-        Sets the text direction of input text.
+        Set the text direction of input text.
 
         It is mainly needed for showing input cursor on correct side of the
         editor when there is no input yet done and making sure neutral
