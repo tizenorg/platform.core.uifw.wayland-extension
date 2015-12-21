@@ -383,6 +383,15 @@
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="command" type="string"/>
     </event>
+    <event name="input_panel_geometry">
+      <description summary="geometry of the input panel">
+        Notify when the geometry of the input panel changed.
+      </description>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="width" type="uint"/>
+      <arg name="height" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_text_input_manager" version="1">
