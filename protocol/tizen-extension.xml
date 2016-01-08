@@ -487,4 +487,81 @@
     </event>
 
   </interface>
+
+  <interface name="tizen_input_device_mgr" version="1">
+
+    <description summary="interface for the list of tizen-device">
+      Clients can get the list of device information.
+    </description>
+    <enum name="capability" bitfield="true">
+      <entry name="pointer" value="1" summary="The seat has pointer devices"/>
+      <entry name="keyboard" value="2" summary="The seat has one or more keyboards"/>
+      <entry name="touch" value="4" summary="The seat has touch devices"/>
+    </enum>
+    <request name="get_devices_info">
+      <arg name="wl_seat" type="object" interface="wl_seat"/>
+      <arg name="capabilities" type="uint"/>
+    </request>
+    <request name="get_device">
+      <arg name="id" type="new_id" interface="tizen_input_device" summary="new device object"/>
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </request>
+    <event name="device_add">
+      <arg name="name" type="string" />
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </event>
+    <event name="device_remove">
+      <arg name="name" type="string" />
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </event>
+  </interface>
+
+  <interface name="tizen_input_device" version="1">
+
+    <enum name="capability" bitfield="true">
+      <entry name="pointer" value="1" summary="The seat has pointer devices"/>
+      <entry name="keyboard" value="2" summary="The seat has one or more keyboards"/>
+      <entry name="touch" value="4" summary="The seat has touch devices"/>
+    </enum>
+    <enum name="class">
+      <entry name="none" value="0" summary=""/>
+      <entry name="keyboard" value="1" summary=""/>
+      <entry name="mouse" value="2" summary=""/>
+      <entry name="touchscreen" value="3" summary=""/>
+      <entry name="rotary" value="4" summary=""/>
+    </enum>
+    <enum name="sub_class">
+      <entry name="none" value="0" summary=""/>
+      <entry name="keypad" value="1" summary=""/>
+      <entry name="finger" value="2" summary=""/>
+    </enum>
+
+    <event name="event_device">
+      <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
+    </event>
+    <enum name="axis_type" bitfield="true">
+      <entry name="pressure" value="1" summary="xxx"/>
+      <entry name="size" value="2" summary="xxx"/>
+      <entry name="angle" value="4" summary="xxx"/>
+      <entry name="distance" value="8" summary="xxx"/>
+      <entry name="radius_x" value="16" summary="xxx"/>
+      <entry name="radius_y" value="32" summary="xxx"/>
+      <entry name="palm" value="64" summary="xxx"/>
+      <entry name="detent" value="128" summary="xxx"/>
+    </enum>
+    <request name="get_axises">
+      <arg name="axis_types" type="uint"  summary="xxx"/>
+    </request>
+    <event name="axis">
+      <arg name="axis_type" type="uint" enum="axis_type" summary=""/>
+      <arg name="value" type="fixed" summary=""/>
+    </event>
+  </interface>
+
 </protocol>
