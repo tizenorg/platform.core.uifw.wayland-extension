@@ -487,4 +487,47 @@
     </event>
 
   </interface>
+
+  <interface name="tizen_input_device_mgr" version="1">
+
+    <description summary="interface for the list of tizen-device">
+      Clients can get the list of device information.
+    </description>
+    <enum name="capability" bitfield="true">
+      <entry name="pointer" value="1" summary="The seat has pointer devices"/>
+      <entry name="keyboard" value="2" summary="The seat has one or more keyboards"/>
+      <entry name="touch" value="4" summary="The seat has touch devices"/>
+    </enum>
+    <request name="get_devices_info">
+      <arg name="wl_seat" type="object" interface="wl_seat"/>
+      <arg name="capabilities" type="uint"/>
+    </request>
+    <request name="get_device">
+      <arg name="id" type="new_id" interface="tizen_input_device" summary="new device object"/>
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </request>
+    <event name="device_add">
+      <arg name="name" type="string" />
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </event>
+    <event name="device_remove">
+      <arg name="name" type="string" />
+      <arg name="identifier" type="string" />
+      <arg name="capability" type="uint" />
+      <arg name="seat" type="object" interface="wl_seat" />
+    </event>
+  </interface>
+
+  <interface name="tizen_input_device" version="1">
+
+    <event name="event_device">
+      <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
+    </event>
+    <request name="destroy" type="destructor"/>
+  </interface>
+
 </protocol>
