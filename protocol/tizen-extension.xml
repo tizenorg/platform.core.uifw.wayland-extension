@@ -170,6 +170,12 @@
       <arg name="subsurface" type="object" interface="wl_subsurface"/>
     </request>
 
+    <request name="get_subsurface">
+      <arg name="id" type="new_id" interface="wl_subsurface" />
+      <arg name="surface" type="object" interface="wl_surface" />
+      <arg name="parent_id" type="uint" />
+    </request>
+
     <!-- for opaque_state -->
     <request name="set_opaque_state">
       <arg name="surface" type="object" interface="wl_surface" />
