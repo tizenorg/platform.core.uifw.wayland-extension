@@ -487,4 +487,113 @@
     </event>
 
   </interface>
+
+  <interface name="tizen_input_device_manager" version="1">
+    <description summary="global input device manager object">
+      Tizen input device manager is a global interface. This object has device add/remove events
+      to provide tizen input device object to a client. This allows for a client to get the con
+
+      Be sure to bind this interface after binding wl_seat interface.
+      Tizen input device manager interface will only provide device add/remove event for devices
+      which belongs to the wl_seat object(s) bound by the client. Therefore, the compositor needs to
+      create/send the device add/remove event only for the current client's seat(s).
+    </description>
+
+    <event name="device_add">
+      <description summary="device addition event">
+        The device add/remove notification is going to be sent when a physical/logical device is
+        added/removed to/from the given seat. Note that a tizen input device object can be assigned to
+        a wl_seat and can also be assigned to the other wl_seat at any time. Whenever a relationship between
+        a tizen input device object changes, device remove event from the current wl_seat object will be made
+        and device add event to the other wl_seat object will also be mode.
+      </description>
+      <arg name="serial" type="uint"/>
+      <arg name="name" type="string"/>
+      <arg name="device" type="object" interface="tizen_input_device"/>
+      <arg name="seat" type="object" interface="wl_seat"/>
+    </event>
+
+    <event name="device_remove">
+      <description summary="device removal event">
+        The device add/remove notification is going to be sent when a physical/logical device is
+        added/removed to/from the given seat. Note that a tizen input device object can be assigned to
+        a wl_seat and can also be assigned to the other wl_seat at any time. Whenever a relationship between
+        a tizen input device object changes, device remove event from the current wl_seat object will be made
+        and device add event to the other wl_seat object will also be mode.
+      </description>
+      <arg name="serial" type="uint"/>
+      <arg name="name" type="string"/>
+      <arg name="device" type="object" interface="tizen_input_device"/>
+      <arg name="seat" type="object" interface="wl_seat"/>
+    </event>
+  </interface>
+
+  <interface name="tizen_input_device" version="1">
+    <description summary="tizen input device object">
+      The tizen_input_device interface represents one or more input devices associated with a physical/logical
+      input device. This interface provides device specific information/events to allows for client to identify
+      the source device of an event or to get the additional axes/attributes of a device.
+      Note that a tizen_input_device object can be used for a physical input device and can also be used for a
+      group of input devices. e.g. a group of mouse devices
+    </description>
+
+    <enum name="class">
+       <description sumary="device class">
+       </description>
+       <entry name="none" value="0" summary="none of class"/>
+       <entry name="keyboard" value="1" summary="keyboard class"/>
+       <entry name="mouse" value="2" summary="mouse class"/>
+       <entry name="touchscreen" value="4" summary="touchscreen class"/>
+    </enum>
+
+    <enum name="subclass">
+       <description sumary="device subclass">
+       </description>
+       <entry name="none" value="0" summary="none of subclass"/>
+    </enum>
+
+    <enum name="axis_type" bitfield="true">
+      <description summary="axis type enums which can be supported by a device">
+      </description>
+      <entry name="radius_x" value="1" summary="radius of x axis of an event area e.g. touching area with a finger or a pen"/>
+      <entry name="radius_y" value="2" summary="radius of y axis of an event area e.g. touching area with a finger or a pen"/>
+      <entry name="pressure" value="4" summary="pressure in an event area e.g. touching area with a finger or a pen"/>
+      <entry name="angle" value="8" summary="angle in an event area e.g. touching area with a finger or a pen"/>
+    </enum>
+
+    <event name="device_info">
+      <description summary="event contains device information">
+      </description>
+      <arg name="class" type="uint" enum="class" summary=""/>
+      <arg name="subclass" type="uint" enum="subclass" summary=""/>
+      <arg name="axes" type="uint" enum="axis_type" summary=""/>
+    </event>
+
+    <event name="event_device">
+      <description summary="event indicates the source device associated with a wl_pointer/keyboard/touch event">
+      </description>
+      <arg name="serial" type="uint"/>
+      <arg name="name" type="string"/>
+      <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
+    </event>
+
+    <request name="select_axes">
+      <description summary="request for selecting some of axes among the axes supported by a tizen_input_device object">
+      </description>
+      <arg name="axes" type="uint" enum="axis_type" summary="set of axis"/>
+    </request>
+
+    <event name="axis">
+      <description summary="xxx">
+      </description>
+      <arg name="axis_type" type="uint" enum="axis_type"/>
+      <arg name="value" type="fixed" summary="axis value"/>
+    </event>
+
+    <request name="release" type="destructor">
+      <description summary="release the tizen_input_device object">
+      </description>
+    </request>
+  </interface>
+
 </protocol>
