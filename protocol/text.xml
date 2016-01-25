@@ -139,6 +139,12 @@
       <entry name="terminal" value="12" summary="input for a terminal"/>
       <entry name="ip" value="13" summary="input for a IP (number and a-f for Ipv6)"/>
       <entry name="emoticon" value="14" summary="input for an emoticon"/>
+      <entry name="digits_signed" value="15" summary="allow digits and negative sign"/>
+      <entry name="digits_decimal" value="16" summary="allow digits and decimal point"/>
+      <entry name="digits_signeddecimal" value="17" summary="allow digits, negative sign and decimal point"/>
+      <entry name="password_digits" value="18" summary="input a password with only digits"/>
+      <entry name="normal_filename" value="19" summary="default input for the name of a file (symbols such as '/' should be disabled)"/>
+      <entry name="normal_personname" value="20" summary="default input for the name of a person"/>
     </enum>
     <request name="set_content_type">
       <description summary="set content purpose and hint">
