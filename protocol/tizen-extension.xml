@@ -505,6 +505,15 @@
       create/send the device add/remove event only for the current client's seat(s).
     </description>
 
+    <enum name="class">
+       <description summary="device class">
+       </description>
+       <entry name="none" value="0" summary="none of class"/>
+       <entry name="keyboard" value="1" summary="keyboard class"/>
+       <entry name="mouse" value="2" summary="mouse class"/>
+       <entry name="touchscreen" value="4" summary="touchscreen class"/>
+    </enum>
+
     <event name="device_add">
       <description summary="device addition event">
         The device add/remove notification is going to be sent when a physical/logical device is
@@ -532,6 +541,39 @@
       <arg name="device" type="object" interface="tizen_input_device"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </event>
+
+    <request name="block">
+      <description summary="Block the tizen_input_device's events">
+      </description>
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="type" type="uint" enum="class"/>
+      <arg name="device" type="object" interface="tizen_input_device" description="tizen_input_device" allow-null="true"/>
+    </request>
+
+    <request name="unblock">
+      <description summary="Unblock the tizen_input_device's events">
+      </description>
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="type" type="uint" enum="class"/>
+      <arg name="device" type="object" interface="tizen_input_device" description="tizen_input_device" allow-null="true"/>
+    </request>
+
+    <request name="enable">
+      <description summary="Enable the tizen_input_device's events">
+      </description>
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="type" type="uint" enum="class"/>
+      <arg name="device" type="object" interface="tizen_input_device" description="tizen_input_device" allow-null="true"/>
+    </request>
+
+    <request name="disable">
+      <description summary="Disable the tizen_input_device's events">
+      </description>
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="type" type="uint" enum="class"/>
+      <arg name="device" type="object" interface="tizen_input_device" description="tizen_input_device" allow-null="true"/>
+    </request>
+
   </interface>
 
   <interface name="tizen_input_device" version="1">
