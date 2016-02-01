@@ -532,6 +532,53 @@
       <arg name="device" type="object" interface="tizen_input_device"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </event>
+
+    <enum name="class">
+       <description summary="device class">
+       </description>
+       <entry name="none" value="0" summary="none of class"/>
+       <entry name="mouse" value="1" summary="mouse class"/>
+       <entry name="keyboard" value="2" summary="keyboard class"/>
+       <entry name="touchscreen" value="4" summary="touchscreen class"/>
+    </enum>
+
+    <enum name="error">
+      <entry name="no_permission" value="0" summary="no permission"/>
+      <entry name="invalid_class" value="1" summary="invalid class"/>
+      <entry name="blocked_already" value="2" summary="blocked already by the other client"/>
+    </enum>
+
+    <event name="error">
+      <description summary="error event">
+      </description>
+      <arg name="errorcode" type="uint" enum="error"/>
+    </event>
+
+    <event name="block_expired">
+      <description summary="block expiration event">
+        This event will be sent if the duration of existing block is expired.
+        Note that no block expired event will be sent if there is no block for the client.
+      </description>
+    </event>
+
+    <request name="block_events">
+      <description summary="request to block sending event(s)">
+        This request allows a client to request to block one or more events for its purpose.
+        By specifying class as an argument in the request, the events belongs to the class will be blocked
+        during the given duration. Note that an error event will be sent if there is any error.
+      </description>
+      <arg name="serial" type="uint" summary=""/>
+      <arg name="class" type="uint" enum="class"/>
+      <arg name="duration" type="uint" summary="time duration with millisecond granularity"/>
+    </request>
+
+    <request name="unblock_events">
+      <description summary="request to unblock sending event(s)">
+        This request allows a client to request to release the existing block for the client.
+        Note that no error event will be sent if there is no existing block for the client.
+      </description>
+      <arg name="serial" type="uint" summary=""/>
+    </request>
   </interface>
 
   <interface name="tizen_input_device" version="1">
