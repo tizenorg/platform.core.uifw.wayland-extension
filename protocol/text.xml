@@ -115,6 +115,7 @@
       <entry name="sensitive_data" value="0x80" summary="typed text should not be stored"/>
       <entry name="latin" value="0x100" summary="just latin characters should be entered"/>
       <entry name="multiline" value="0x200" summary="the text input is multiline"/>
+      <entry name="word_capitalization" value="0x400" summary="switch to uppercase letters at the start of a word"/>
     </enum>
     <enum name="content_purpose">
       <description summary="content purpose">
