@@ -253,6 +253,18 @@
       </description>
       <arg name="context" type="object" interface="wl_input_method_context"/>
     </event>
+    <event name="show_input_panel">
+      <description summary="show input panel event">
+        Input panel (virtual keyboard) was requested to show.
+      </description>
+      <arg name="context" type="object" interface="wl_input_method_context"/>
+    </event>
+    <event name="hide_input_panel">
+      <description summary="hide input panel event">
+        Input panel (virtual keyboard) was requested to hide.
+      </description>
+      <arg name="context" type="object" interface="wl_input_method_context"/>
+    </event>
   </interface>
 
   <interface name="wl_input_panel" version="1">
