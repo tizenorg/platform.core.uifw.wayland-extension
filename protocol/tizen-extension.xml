@@ -533,7 +533,7 @@
       <arg name="seat" type="object" interface="wl_seat"/>
     </event>
 
-    <enum name="class">
+    <enum name="clas">
        <description summary="device class">
        </description>
        <entry name="none" value="0" summary="none of class"/>
@@ -568,7 +568,7 @@
         during the given duration. Note that an error event will be sent if there is any error.
       </description>
       <arg name="serial" type="uint" summary=""/>
-      <arg name="class" type="uint" enum="class"/>
+      <arg name="clas" type="uint" enum="clas"/>
       <arg name="duration" type="uint" summary="time duration with millisecond granularity"/>
     </request>
 
@@ -590,7 +590,7 @@
       group of input devices. e.g. a group of mouse devices
     </description>
 
-    <enum name="class">
+    <enum name="clas">
        <description summary="device class">
        </description>
        <entry name="none" value="0" summary="none of class"/>
@@ -599,7 +599,7 @@
        <entry name="touchscreen" value="4" summary="touchscreen class"/>
     </enum>
 
-    <enum name="subclass">
+    <enum name="subclas">
        <description summary="device subclass">
        </description>
        <entry name="none" value="0" summary="none of subclass"/>
@@ -618,8 +618,8 @@
     <event name="device_info">
       <description summary="event contains device information">
       </description>
-      <arg name="class" type="uint" enum="class"/>
-      <arg name="subclass" type="uint" enum="subclass"/>
+      <arg name="clas" type="uint" enum="clas"/>
+      <arg name="subclas" type="uint" enum="subclas"/>
       <arg name="axes" type="array" summary="array of axis enum"/>
     </event>
 
