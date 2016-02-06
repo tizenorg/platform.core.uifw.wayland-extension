@@ -244,6 +244,7 @@
         which allows communication with the text model.
       </description>
       <arg name="id" type="new_id" interface="wl_input_method_context"/>
+      <arg name="text_input_id" type="uint"/>
     </event>
     <event name="deactivate">
       <description summary="deactivate event">
