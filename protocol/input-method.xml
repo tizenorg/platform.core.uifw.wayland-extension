@@ -229,6 +229,9 @@
       <arg name="input_panel_data" type="string"/>
       <arg name="input_panel_data_length" type="uint"/>
     </event>
+    <event name="bidi_direction">
+      <arg name="direction" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_input_method" version="1">
