@@ -217,6 +217,9 @@
       <arg name="input_panel_data" type="string"/>
       <arg name="input_panel_length" type="uint"/>
     </request>
+    <request name="bidi_direction">
+      <arg name="direction" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in
