@@ -695,4 +695,22 @@
     </request>
   </interface>
 
+  <interface name="tizen_effect" version="1">
+     <enum name="type">
+      <entry name="none" value="0" summary="none"/>
+      <entry name="show" value="1" summary="show effect of window"/>
+      <entry name="hide" value="2" summary="hide effect of window"/>
+      <entry name="restack" value="3" summary="restack effect of window"/>
+     </enum>
+     <request name="destroy" type="destructor" />
+     <event name="start">
+       <arg name="surface" type="object" interface="wl_surface"/>
+       <arg name="type" type="uint" />
+     </event>
+     <event name="end">
+       <arg name="surface" type="object" interface="wl_surface"/>
+       <arg name="type" type="uint" />
+     </event>
+  </interface>
+
 </protocol>
