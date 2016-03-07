@@ -401,6 +401,14 @@
       <arg name="width" type="uint"/>
       <arg name="height" type="uint"/>
     </event>
+    <event name="input_panel_data">
+      <description summary="input panel data">
+        Notify when the input panels ask to send input panel data
+      </description>
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="input_panel_data" type="string"/>
+      <arg name="input_panel_data_length" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_text_input_manager" version="1">
