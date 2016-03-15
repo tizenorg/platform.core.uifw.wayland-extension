@@ -519,7 +519,7 @@
         and device add event to the other wl_seat object will also be mode.
       </description>
       <arg name="serial" type="uint"/>
-      <arg name="name" type="string"/>
+      <arg name="identifier" type="string"/>
       <arg name="device" type="new_id" interface="tizen_input_device"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </event>
@@ -533,7 +533,7 @@
         and device add event to the other wl_seat object will also be mode.
       </description>
       <arg name="serial" type="uint"/>
-      <arg name="name" type="string"/>
+      <arg name="identifier" type="string"/>
       <arg name="device" type="object" interface="tizen_input_device"/>
       <arg name="seat" type="object" interface="wl_seat"/>
     </event>
@@ -623,6 +623,7 @@
     <event name="device_info">
       <description summary="event contains device information">
       </description>
+      <arg name="name" type="string"/>
       <arg name="clas" type="uint" enum="clas"/>
       <arg name="subclas" type="uint" enum="subclas"/>
       <arg name="axes" type="array" summary="array of axis enum"/>
