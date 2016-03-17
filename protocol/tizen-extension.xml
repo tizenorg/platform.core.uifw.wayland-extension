@@ -548,9 +548,12 @@
     </enum>
 
     <enum name="error">
-      <entry name="no_permission" value="0" summary="no permission"/>
-      <entry name="invalid_class" value="1" summary="invalid class"/>
-      <entry name="blocked_already" value="2" summary="blocked already by the other client"/>
+      <entry name="none" value="0" summary="no error"/>
+      <entry name="no_permission" value="1" summary="no permission"/>
+      <entry name="invalid_class" value="2" summary="invalid class"/>
+      <entry name="blocked_already" value="3" summary="blocked already by the other client"/>
+      <entry name="no_system_resources" value="4" summary="no system resources such as memory lack"/>
+      <entry name="invalid_parameter" value="5" summary="argument is invalid"/>
     </enum>
 
     <event name="error">
@@ -584,6 +587,75 @@
       </description>
       <arg name="serial" type="uint" summary=""/>
     </request>
+
+    <request name="init_generator">
+      <description summary="generate a key event using specific or default device">
+      </description>
+    </request>
+
+    <request name="deinit_generator">
+      <description summary="generate a key event using specific or default device">
+      </description>
+    </request>
+
+    <request name="generate_key">
+      <description summary="generate a key event using specific or default device">
+      </description>
+      <arg name="keyname" type="string"/>
+      <arg name="pressed" type="uint"/>
+    </request>
+
+    <enum name="pointer_event_type">
+      <entry name="begin" value="0"/>
+      <entry name="update" value="1"/>
+      <entry name="end" value="2"/>
+    </enum>
+
+    <request name="generate_pointer">
+      <description summary="generate a pointer event using specific or default device">
+      </description>
+      <arg name="type" type="uint" enum="pointer_event_type"/>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="button" type="uint"/>
+    </request>
+
+    <request name="generate_touch">
+      <description summary="generate a touch event using specific or default device">
+      </description>
+      <arg name="type" type="uint" enum="pointer_event_type"/>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="finger" type="uint"/>
+    </request>
+
+    <event name="generate_key_notify">
+      <description summary="Notify to result of key generation">
+      </description>
+      <arg name="keyname" type="string"/>
+      <arg name="pressed" type="uint"/>
+      <arg name="ret" type="uint"/>
+    </event>
+
+    <event name="generate_pointer_notify">
+      <description summary="Notify to result of key generation">
+      </description>
+      <arg name="type" type="uint" enum="pointer_event_type"/>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="button" type="uint"/>
+      <arg name="ret" type="uint"/>
+    </event>
+
+    <event name="generate_touch_notify">
+      <description summary="Notify to result of key generation">
+      </description>
+      <arg name="type" type="uint" enum="pointer_event_type"/>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="finger" type="uint"/>
+      <arg name="ret" type="uint"/>
+    </event>
   </interface>
 
   <interface name="tizen_input_device" version="1">
