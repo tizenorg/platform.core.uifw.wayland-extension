@@ -714,6 +714,7 @@
       <entry name="radius_y" value="2" summary="radius of y axis of an event area e.g. touching area with a finger or a pen"/>
       <entry name="pressure" value="3" summary="pressure in an event area e.g. touching area with a finger or a pen"/>
       <entry name="angle" value="4" summary="angle in an event area e.g. touching area with a finger or a pen"/>
+      <entry name="detent" value="5" summary="detent value e.g. moved distance with a rotary device"/>
     </enum>
 
     <event name="device_info">
