@@ -235,6 +235,15 @@
       <arg name="id" type="int" />
     </event>
 
+    <!-- for background state -->
+    <request name="set_background_state">
+       <arg name="pid" type="uint" />
+    </request>
+
+    <request name="unset_background_state">
+       <arg name="pid" type="uint" />
+    </request>
+
   </interface>
 
   <interface name="tizen_visibility" version="1">
