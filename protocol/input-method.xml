@@ -196,6 +196,9 @@
       <arg name="input_panel_data" type="string"/>
       <arg name="input_panel_data_length" type="uint"/>
     </request>
+    <request name="hide_ime">
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+    </request>
     <event name="surrounding_text">
       <description summary="surrounding text event">
         The plain surrounding text around the input position. Cursor is the
