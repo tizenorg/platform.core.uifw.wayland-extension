@@ -1,5 +1,4 @@
 <protocol name="tizen_extension">
-
   <interface name="tizen_surface" version="1">
     <request name="get_tizen_resource">
       <arg name="id" type="new_id" interface="tizen_resource" />
@@ -320,8 +319,8 @@
     <event name="swipe">
       <arg name="mode" type="uint" enum="mode"/>
       <arg name="num_of_fingers" type="uint"/>
-      <arg name="sx" type="int" description="x coordinate of touch down point"/>
-      <arg name="sy" type="int" description="y coordinate of touch down point"/>
+      <arg name="sx" type="int" summary="x coordinate of touch down point"/>
+      <arg name="sy" type="int" summary="y coordinate of touch down point"/>
       <arg name="direction" type="uint" enum="direction"/>
     </event>
   </interface>
