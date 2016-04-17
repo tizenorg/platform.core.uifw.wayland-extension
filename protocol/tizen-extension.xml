@@ -824,4 +824,21 @@
      </event>
   </interface>
 
+  <interface name="tizen_display_policy" version="1">
+    <enum name="error_state">
+      <entry name="none" value="0"/>
+      <entry name="permission_denied" value="1"/>
+    </enum>
+    <!-- for window brightness -->
+    <request name="set_window_brightness">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="brightness" type="int"/>
+    </request>
+
+    <event name="window_brightness_done">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="brightness" type="int"/>
+      <arg name="error_state" type="uint"/>
+    </event>
+  </interface>
 </protocol>
