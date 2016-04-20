@@ -243,6 +243,15 @@
        <arg name="pid" type="uint" />
     </request>
 
+    <!-- for floating mode -->
+    <request name="set_floating_mode">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+    </request>
+
+    <request name="unset_floating_mode">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+    </request>
+
   </interface>
 
   <interface name="tizen_visibility" version="1">
