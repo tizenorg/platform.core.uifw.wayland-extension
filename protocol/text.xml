@@ -219,6 +219,12 @@
     <request name="bidi_direction">
       <arg name="direction" type="uint"/>
     </request>
+    <request name="set_selection_text">
+      <description summary="set the selected text">
+        Set the selected text to the input panel.
+      </description>
+      <arg name="text" type="string"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in
