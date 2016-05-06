@@ -199,17 +199,22 @@
     <request name="hide_input_panel">
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
     </request>
+    <request name="get_selection_text">
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+    </request>
+    <request name="get_surrounding_text">
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="maxlen_before" type="uint"/>
+      <arg name="maxlen_after" type="uint"/>
+    </request>
     <event name="surrounding_text">
       <description summary="surrounding text event">
-        The plain surrounding text around the input position. Cursor is the
-        position in bytes within the surrounding text relative to the beginning
-        of the text. Anchor is the position in bytes of the selection anchor
-        within the surrounding text relative to the beginning of the text. If
-        there is no selected text anchor is the same as cursor.
+        The plain surrounding text around the input position requested by get_surrounding_text.
+        Text is the UTF-8 encoded, Cursor_position is offset of characters in insert position.
       </description>
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="text" type="string"/>
-      <arg name="cursor" type="uint"/>
-      <arg name="anchor" type="uint"/>
+      <arg name="cursor_position" type="uint"/>
     </event>
     <event name="reset">
     </event>
@@ -241,7 +246,11 @@
       <arg name="direction" type="uint"/>
     </event>
     <event name="selection_text">
+      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="text" type="string"/>
+    </event>
+    <event name="cursor_position">
+      <arg name="cursor_position" type="uint"/>
     </event>
   </interface>
 
