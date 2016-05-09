@@ -811,8 +811,10 @@
     <request name="launch">
       <arg name="file" type="string"/>
       <arg name="file_type" type="uint" />
+      <arg name="color_depth" type="uint" />
       <arg name="rotation" type="uint" />
       <arg name="indicator" type="uint" />
+      <arg name="options" type="array" />
     </request>
 
     <request name="owner">
