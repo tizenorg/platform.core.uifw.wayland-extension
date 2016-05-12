@@ -382,6 +382,10 @@
        summary="mode to get a key grab exclusively regardless of the order in surface stack"/>
       <entry name="registered" value="5"
        summary="mode to get a key grab only when a requesting surface is on top among the registering surfaces for the key"/>
+      <entry name="displayoff" value="6"
+       summary="mode to get a key grab only when a displayoff mode is enabled"/>
+      <entry name="pictureoff" value="6"
+       summary="temporary maintain this enum to maintain compatibility."/>
     </enum>
 
     <request name="set_keygrab">
@@ -420,6 +424,45 @@
     <event name="keygrab_notify_list">
       <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
       <arg name="grab_result" type="array" summary="array of three integer variables pairs each pairs consist of keycode, keygrab mode and keygrab result"/>
+    </event>
+
+    <enum name="register_mode">
+      <entry name="none_register" value="1"/>
+      <entry name="pass_register" value="2"/>
+      <entry name="grab_register" value="3"/>
+    </enum>
+
+    <request name="register_mode_config">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="mode" type="uint"/>
+      <arg name="enable" type="uint"/>
+    </request>
+
+    <event name="register_mode_config_notify">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="mode" type="uint"/>
+      <arg name="enable" type="uint"/>
+      <arg name="error" type="uint"/>
+    </event>
+
+    <request name="key_monitor">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="enable" type="uint"/>
+    </request>
+
+    <event name="key_monitor_notify">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="enable" type="uint"/>
+      <arg name="error" type="uint"/>
+    </event>
+
+    <request name="get_register_delivery">
+      <arg name="key" type="uint"/>
+    </request>
+
+    <event name="get_register_delivery_notify">
+      <arg name="key" type="uint"/>
+      <arg name="result" type="uint"/>
     </event>
   </interface>
 
