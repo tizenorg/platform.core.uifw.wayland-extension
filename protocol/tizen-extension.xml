@@ -15,6 +15,11 @@
   </interface>
 
   <interface name="tizen_policy" version="1">
+    <request name="get_buffer_flusher">
+      <arg name="id" type="new_id" interface="tizen_buffer_flusher" summary=""/>
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+    </request>
+
     <request name="get_visibility">
       <arg name="id" type="new_id" interface="tizen_visibility" summary="new visibility object"/>
       <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
@@ -873,4 +878,11 @@
       <arg name="error_state" type="uint"/>
     </event>
   </interface>
+
+  <interface name="tizen_buffer_flusher" version="1">
+    <request name="destroy" type="destructor" />
+    <event name="flush">
+    </event>
+  </interface>
+
 </protocol>
