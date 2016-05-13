@@ -877,4 +877,18 @@
       <arg name="error_state" type="uint"/>
     </event>
   </interface>
+
+  <interface name="tizen_surface_shm" version="1">
+    <request name="get_flusher">
+      <arg name="id" type="new_id" interface="tizen_surface_shm_flusher" summary=""/>
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+    </request>
+  </interface>
+
+  <interface name="tizen_surface_shm_flusher" version="1">
+    <request name="destroy" type="destructor" />
+    <event name="flush">
+    </event>
+  </interface>
+
 </protocol>
