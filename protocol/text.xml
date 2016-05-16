@@ -85,16 +85,6 @@
         input method flow.
       </description>
     </request>
-    <request name="set_surrounding_text">
-      <description summary="set the surrounding text">
-        Set the plain surrounding text around the input position. Text is
-        UTF-8 encoded. Cursor_position is the offset within the
-        surrounding text.
-      </description>
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
-      <arg name="text" type="string"/>
-      <arg name="cursor_position" type="uint"/>
-    </request>
     <enum name="content_hint">
       <description summary="content hint">
         Content hint is a bitmask to allow to modify the behavior of the text
@@ -216,13 +206,6 @@
     </request>
     <request name="bidi_direction">
       <arg name="direction" type="uint"/>
-    </request>
-    <request name="set_selection_text">
-      <description summary="set the selected text">
-        Set the selected text to the input panel.
-      </description>
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
-      <arg name="text" type="string"/>
     </request>
     <request name="set_cursor_position">
       <description summary="set the cursor index">
@@ -421,12 +404,12 @@
       <arg name="input_panel_data_length" type="uint"/>
     </event>
     <event name="get_selection_text">
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="fd" type="fd"/>
     </event>
     <event name="get_surrounding_text">
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="maxlen_before" type="uint"/>
       <arg name="maxlen_after" type="uint"/>
+      <arg name="fd" type="fd"/>
     </event>
   </interface>
 

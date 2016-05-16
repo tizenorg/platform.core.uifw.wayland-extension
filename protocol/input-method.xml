@@ -200,22 +200,13 @@
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
     </request>
     <request name="get_selection_text">
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
+      <arg name="fd" type="fd"/>
     </request>
     <request name="get_surrounding_text">
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="maxlen_before" type="uint"/>
       <arg name="maxlen_after" type="uint"/>
+      <arg name="fd" type="fd"/>
     </request>
-    <event name="surrounding_text">
-      <description summary="surrounding text event">
-        The plain surrounding text around the input position requested by get_surrounding_text.
-        Text is the UTF-8 encoded, Cursor_position is offset of characters in insert position.
-      </description>
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
-      <arg name="text" type="string"/>
-      <arg name="cursor_position" type="uint"/>
-    </event>
     <event name="reset">
     </event>
     <event name="content_type">
@@ -244,10 +235,6 @@
     </event>
     <event name="bidi_direction">
       <arg name="direction" type="uint"/>
-    </event>
-    <event name="selection_text">
-      <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
-      <arg name="text" type="string"/>
     </event>
     <event name="cursor_position">
       <arg name="cursor_position" type="uint"/>
