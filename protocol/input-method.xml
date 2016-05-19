@@ -243,6 +243,14 @@
     <event name="selection_text">
       <arg name="text" type="string"/>
     </event>
+    <event name="process_input_device_event">
+      <description summary="request to process unconventional input device event">
+        Deliver unconventional input device events that need to be processed by input panel
+      </description>
+      <arg name="event_type" type="uint"/>
+      <arg name="event_data" type="string"/>
+      <arg name="event_length" type="uint"/>
+    </event>
   </interface>
 
   <interface name="wl_input_method" version="1">
