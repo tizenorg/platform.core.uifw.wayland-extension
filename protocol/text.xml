@@ -225,6 +225,14 @@
       </description>
       <arg name="text" type="string"/>
     </request>
+    <request name="process_input_device_event">
+      <description summary="request to process unconventional input device event">
+        Deliver unconventional input device events that need to be processed by input panel
+      </description>
+      <arg name="event_type" type="uint"/>
+      <arg name="event_data" type="string"/>
+      <arg name="event_length" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in
