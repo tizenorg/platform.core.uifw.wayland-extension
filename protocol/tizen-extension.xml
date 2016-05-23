@@ -575,6 +575,7 @@
     <enum name="error">
       <entry name="none" value="0"/>
       <entry name="object_exists" value="1"/>
+      <entry name="viewport_exists" value="2"/>
     </enum>
 
     <event name="format">
@@ -588,6 +589,11 @@
     <request name="get_object">
       <arg name="id" type="new_id" interface="tizen_video_object" />
       <arg name="surface" type="object" interface="wl_surface" />
+    </request>
+
+    <request name="get_viewport">
+      <arg name="id" type="new_id" interface="tizen_viewport" />
+      <arg name="subsurface" type="object" interface="wl_subsurface" />
     </request>
 
   </interface>
@@ -611,6 +617,183 @@
     <request name="set_attribute">
       <arg name="name" type="string"/>
       <arg name="value" type="int"/>
+    </request>
+
+  </interface>
+
+  <interface name="tizen_viewport" version="1">
+
+      <description summary="the viewport for a subsurface">
+    This is the alternative and convenient solution of wl_viewport to present
+    a subsurface on screen.
+
+    The below five functions can be replaced with this interface. The below
+    functions will be ignored after applying this interface to a subsurface.
+     - wl_surface.set_buffer_transform
+     - wl_surface.set_buffer_scale
+     - wl_subsurface.set_position
+     - wl_viewport.set_source
+     - wl_viewport.set_destination
+
+    wl_viewport.set_source is very complicated especially when the buffer of
+    wl_surface is transformed by wl_surface.set_buffer_transform. And when the
+    parent is resized, if we want to change the geometry of a subsurface also,
+    wl_subsurface.set_position and wl_viewport.set_destination should be called
+    everytime the parent is resized in client side. This makes difficult to
+    synchronize a parent surface and a subsurface on screen.
+
+    tizen_viewport allows clients to set the relative geometry to a subsurface
+    in a parent surface. Whenever a parent surface is resized, the geometry of
+    a subsurface will be calculated, moved and resized automatically by a
+    compositor.
+
+    The tizen_viewport is specified in the coordinates of a subsurface's parent.
+
+    The below 3 functions don't consider the transform of a parent's surface.
+     - tizen_viewport.set_source
+     - tizen_viewport.set_destination
+     - tizen_viewport.set_destination_ratio
+
+    However, tizen_destination_mode.follow_parent_transform is called,
+    tizen_viewport will consider the transform of a parent surface when applying
+    the destination mode to a subsurface.
+
+    The destination will be cropped by a parent surface.
+
+    The change will be applied when wl_surface.commit is called.
+      </description>
+
+    <request name="destroy" type="destructor" />
+
+    <request name="set_transform">
+      <description summary="set the transform of a subsurface">
+    The accepted values for the transform parameter are the values for wl_output.transform
+    according to the output transform.
+
+    The tizen_viewport.set_transform is applied only to itself. Basically it
+    doesn't effect the transform of its subsurfaces. That is, if 90 transform is
+    setted and its subsurface has 0 transform, its subsurface won't be
+    rotated.
+
+    If need to rotate the subsurface depended on a parent surface,
+    tizen_viewport.follow_parent_transform will make it possible.
+
+      </description>
+      <arg name="transform" type="uint"/>
+    </request>
+
+    <request name="set_source">
+      <description summary="set the source rectalge of a wl_buffer">
+    The source rectangle won't be changed when a parent is resized. If it needs
+    to be changed, tizen_viewport.set_source should be called with new values.
+      </description>
+      <arg name="x" type="uint"/>
+      <arg name="y" type="uint"/>
+      <arg name="width" type="uint"/>
+      <arg name="height" type="uint"/>
+    </request>
+
+    <request name="set_destination">
+      <description summary="set the destination rectalge in a parent surface">
+    The destination rectangle won't be changed when a parent is resized. If it
+    needs to be changed, tizen_viewport.set_destination should be called with
+    new values.
+      </description>
+      <arg name="x" type="int"/>
+      <arg name="y" type="int"/>
+      <arg name="width" type="uint"/>
+      <arg name="height" type="uint"/>
+    </request>
+
+    <request name="set_destination_ratio">
+      <description summary="set the ratio destination rectalge in a parent surface">
+    The destination rectangle of a subsurface will be automatically changed
+    when a parent is resized. This allows the real number between 0.0 and 1.0.
+    See wl_fixed_from_double and wl_fixed_to_double.
+      </description>
+      <arg name="x" type="fixed"/>
+      <arg name="y" type="fixed"/>
+      <arg name="width" type="fixed"/>
+      <arg name="height" type="fixed"/>
+    </request>
+
+    <request name="get_destination_mode">
+      <arg name="id" type="new_id" interface="tizen_destination_mode" />
+    </request>
+
+  </interface>
+
+  <interface name="tizen_destination_mode" version="1">
+
+      <description summary="the destination mode for a subsurface">
+    The destination rectangle will be automatically changed when a parent is
+    resized. When tizen_destination_mode.set is called, the value of
+    tizen_viewport.set_destination and tizen_viewport.set_destination_ratio
+    will be ignored.
+
+    The destination of a subsurface is decided by the mode, ratio, scale, offset
+    and align values. The ratio, scale, offset and align will be applied
+    sequentially.
+
+    The change will be applied when wl_surface.commit is called.
+      </description>
+
+    <enum name="error">
+      <entry name="invalid_type" value="0"/>
+    </enum>
+
+    <enum name="type">
+      <entry name="none" value="0"/>
+      <entry name="letter_box" value="1"/>
+      <entry name="origin" value="2"/>
+      <entry name="full" value="3"/>
+      <entry name="cropped_full" value="4"/>
+      <entry name="origin_or_letter" value="5"/>
+    </enum>
+
+    <request name="destroy" type="destructor" />
+
+    <request name="follow_parent_transform">
+      <description summary="follow the transform change of a parent surface">
+    The real transform of a subsurface is (parent's transform + subsurface's transform).
+    That is, the subsurface will be rotated automatically when the parent is rotated.
+      </description>
+    </request>
+
+    <request name="unfollow_parent_transform" />
+
+    <request name="set" summary="set the destination mode">
+      <arg name="mode" type="uint" enum="type"/>
+    </request>
+
+    <request name="set_ratio">
+      <description summary="set the ratio of the destination rectangle of a subsurface">
+    This allows the real number. See wl_fixed_from_double and wl_fixed_to_double.
+      </description>
+      <arg name="horizontal" type="fixed"/>
+      <arg name="vertical" type="fixed"/>
+    </request>
+
+    <request name="set_scale">
+      <description summary="set the scale of the destination rectangle of a subsurface">
+    This allows the real number. See wl_fixed_from_double and wl_fixed_to_double.
+      </description>
+      <arg name="horizontal" type="fixed"/>
+      <arg name="vertical" type="fixed"/>
+    </request>
+
+    <request name="set_offset">
+      <arg name="x" type="int"/>
+      <arg name="y" type="int"/>
+    </request>
+
+    <request name="set_align">
+      <description summary="set the align of the destination rectangle of a subsurface">
+    This allows the real number between 0.0 and 1.0. See wl_fixed_from_double and
+    wl_fixed_to_double.
+      </description>
+      <arg name="horizontal" type="fixed"/>
+      <arg name="vertical" type="fixed"/>
     </request>
 
   </interface>
