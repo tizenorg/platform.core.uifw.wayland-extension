@@ -316,5 +316,13 @@
         window when a text model is active.
       </description>
     </request>
+
+    <request name="set_ready">
+      <description summary="set the current state of the keyboard surface as a ready state">
+        A keyboard surface needs to be shown after rendering the first frame is completed.
+        Otherwise, the keyboard surface that contains inappropriate layout will be displayed.
+      </description>
+      <arg name="state" type="uint"/>
+    </request>
   </interface>
 </protocol>
