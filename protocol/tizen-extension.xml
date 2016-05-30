@@ -389,6 +389,23 @@
        summary="mode to get a key grab only when a requesting surface is on top among the registering surfaces for the key"/>
     </enum>
 
+    <enum name="config_mode">
+      <description summary="mode for setting specific property for Key delivery">
+        This value is used to set a mode for a window. With this mode and
+        the order of the surface between surfaces' stack, the compositor will determine the destination client
+        surface.
+      </description>
+      <entry name="none" value="0" summary="none"/>
+      <entry name="invisible_set" value="1"
+       summary="mode to set window to enable send event to invisible window below in stack"/>
+      <entry name="invisible_get" value="2"
+       summary="mode to set window to get event to invisible state if any top window has set register_set"/>
+      <entry name="num_key_focus" value="3"
+          summary="mode to register for num keys for focus window"/>
+      <entry name="picture_off" value="4"
+          summary="mode to set picture off for particular key"/>
+    </enum>
+
     <request name="set_keygrab">
       <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
       <arg name="key" type="uint"/>
@@ -415,6 +432,25 @@
       <arg name="ungrab_list" type="array" summary="array of integer variables meaning keycode wanted to ungrab"/>
     </request>
 
+    <request name="get_keygrab_list">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+    </request>
+
+    <request name="set_register_none_key">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="data" type="uint"/>
+    </request>
+
+    <request name="get_keyregister_status">
+      <arg name="data" type="uint"/>
+    </request>
+
+    <request name="set_input_config">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="config_mode" type="uint"/>
+      <arg name="value" type="uint"/>
+    </request>
+
     <event name="keygrab_notify">
       <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
       <arg name="key" type="uint"/>
@@ -425,6 +461,24 @@
     <event name="keygrab_notify_list">
       <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
       <arg name="grab_result" type="array" summary="array of three integer variables pairs each pairs consist of keycode, keygrab mode and keygrab result"/>
+    </event>
+
+    <event name="getgrab_notify_list">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="grab_result" type="array" summary="array of two integer variables pairs each pairs consist of keycode, keygrab mode"/>
+    </event>
+
+    <event name="set_register_none_key_notify">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="true"/>
+      <arg name="mode" type="uint"/>
+    </event>
+
+    <event name="keyregister_notify">
+      <arg name="status" type="uint"/>
+    </event>
+
+    <event name="set_input_config_notify">
+      <arg name="status" type="uint"/>
     </event>
   </interface>
 
