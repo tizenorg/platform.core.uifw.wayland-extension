@@ -222,6 +222,16 @@
       <arg name="event_data" type="string"/>
       <arg name="event_length" type="uint"/>
     </request>
+    <request name="filter_key_event">
+      <description summary="input panel data">
+        Filter key event by input method
+      </description>
+      <arg name="serial" type="uint"/>
+      <arg name="time" type="uint"/>
+      <arg name="keyname" type="string"/>
+      <arg name="state" type="uint"/>
+      <arg name="modifiers" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in
@@ -419,6 +429,10 @@
       <arg name="maxlen_before" type="uint"/>
       <arg name="maxlen_after" type="uint"/>
       <arg name="fd" type="fd"/>
+    </event>
+    <event name="filter_key_event_done">
+      <arg name="serial" type="uint"/>
+      <arg name="state" type="uint"/>
     </event>
   </interface>
 
