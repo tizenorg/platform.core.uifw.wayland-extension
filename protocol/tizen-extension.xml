@@ -69,6 +69,7 @@
       <entry name="dnd" value="6"/>
       <entry name="custom" value="7"/>
       <entry name="notification" value="8"/>
+      <entry name="utility" value="9"/>
     </enum>
 
     <request name="set_type">
