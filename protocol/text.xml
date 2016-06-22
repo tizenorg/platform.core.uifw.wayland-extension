@@ -232,6 +232,9 @@
       <arg name="state" type="uint"/>
       <arg name="modifiers" type="uint"/>
     </request>
+    <request name="reset_sync">
+      <arg name="serial" type="uint"/>
+    </request>
     <event name="enter">
       <description summary="enter event">
         Notify the text-input object when it received focus. Typically in
@@ -433,6 +436,9 @@
     <event name="filter_key_event_done">
       <arg name="serial" type="uint"/>
       <arg name="state" type="uint"/>
+    </event>
+    <event name="reset_done">
+      <arg name="serial" type="uint"/>
     </event>
   </interface>
 
