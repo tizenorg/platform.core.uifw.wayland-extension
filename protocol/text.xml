@@ -84,6 +84,7 @@
         reset, for example after the text was changed outside of the normal
         input method flow.
       </description>
+      <arg name="serial" type="uint"/>
     </request>
     <enum name="content_hint">
       <description summary="content hint">
@@ -433,6 +434,9 @@
     <event name="filter_key_event_done">
       <arg name="serial" type="uint"/>
       <arg name="state" type="uint"/>
+    </event>
+    <event name="reset_done">
+      <arg name="serial" type="uint"/>
     </event>
   </interface>
 
