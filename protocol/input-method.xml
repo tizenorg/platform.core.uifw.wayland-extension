@@ -211,7 +211,11 @@
       <arg name="serial" type="uint"/>
       <arg name="state" type="uint"/>
     </request>
+    <request name="reset_done">
+      <arg name="serial" type="uint"/>
+    </request>
     <event name="reset">
+      <arg name="serial" type="uint"/>
     </event>
     <event name="content_type">
       <arg name="hint" type="uint"/>
