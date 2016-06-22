@@ -211,6 +211,9 @@
       <arg name="serial" type="uint"/>
       <arg name="state" type="uint"/>
     </request>
+    <request name="reset_done">
+      <arg name="serial" type="uint"/>
+    </request>
     <event name="reset">
     </event>
     <event name="content_type">
@@ -260,6 +263,9 @@
       <arg name="keyname" type="string"/>
       <arg name="state" type="uint"/>
       <arg name="modifiers" type="uint"/>
+    </event>
+    <event name="reset_sync">
+      <arg name="serial" type="uint"/>
     </event>
   </interface>
 
