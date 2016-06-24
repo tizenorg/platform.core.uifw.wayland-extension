@@ -348,6 +348,11 @@
       <arg name="sy" type="int" summary="y coordinate of touch down point"/>
       <arg name="direction" type="uint" enum="direction"/>
     </event>
+
+    <request name="enable">
+      <arg name="surface" type="object" interface="wl_surface" allow-null="false"/>
+      <arg name="enabled" type="uint"/>
+    </request>
   </interface>
 
   <interface name="tizen_keyrouter" version="1">
