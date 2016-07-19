@@ -866,8 +866,8 @@
        <description summary="device class">
        </description>
        <entry name="none" value="0" summary="none of class"/>
+       <entry name="mouse" value="1" summary="mouse class"/>
        <entry name="keyboard" value="2" summary="keyboard class"/>
-       <entry name="mouse" value="3" summary="mouse class"/>
        <entry name="touchscreen" value="4" summary="touchscreen class"/>
     </enum>
 
