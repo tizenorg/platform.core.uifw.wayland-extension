@@ -1117,4 +1117,46 @@
       <arg name="error_state" type="uint"/>
     </event>
   </interface>
+
+  <interface name="tizen_indicator" version="1">
+    <enum name="state">
+      <entry name="unknown" value="0" summary="unknown"/>
+      <entry name="off" value="1" summary="can not show indicator"/>
+      <entry name="on" value="2" summary="can show indicator"/>
+    </enum>
+    <enum name="opacity_mode">
+      <entry name="unknown" value="0" summary="unknown"/>
+      <entry name="opaque" value="1" summary="opaque mode"/>
+      <entry name="translucent" value="2" summary="translucent mode"/>
+      <entry name="transparent" value="3" summary="transparent mode"/>
+    </enum>
+    <enum name="visible_type">
+      <entry name="hidden" value="0" summary="hidden type indicator"/>
+      <entry name="shown" value="1" summary="shown type indicator"/>
+    </enum>
+
+    <request name="destroy" type="destructor"/>
+    <request name="set_state">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+      <arg name="state" type="uint" />
+    </request>
+    <request name="set_opacity_mode">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+      <arg name="mode" type="uint" />
+    </request>
+    <request name="set_visible_type">
+      <arg name="surface" type="object" interface="wl_surface" summary="surface object"/>
+      <arg name="type" type="uint" />
+    </request>
+
+    <event name="state_changed">
+      <arg name="surface" type="object" interface="wl_surface"/>
+      <arg name="state" type="int" summary="state of the indicator"/>
+      <arg name="mode" type="int" summary="opaque mode of the indicator"/>
+      <arg name="type" type="int" summary="visible type of the indicator"/>
+    </event>
+    <event name="flick">
+      <arg name="surface" type="object" interface="wl_surface" summary="occur the flick event"/>
+    </event>
+  </interface>
 </protocol>
