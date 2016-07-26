@@ -239,6 +239,14 @@
       <arg name="id" type="int" />
     </event>
 
+    <!-- for aux_message -->
+    <event name="aux_message">
+      <arg name="surface" type="object" interface="wl_surface" />
+      <arg name="key" type="string" />
+      <arg name="value" type="string" />
+      <arg name="options" type="array" />
+    </event>
+
     <!-- for background state -->
     <request name="set_background_state">
        <arg name="pid" type="uint" />
