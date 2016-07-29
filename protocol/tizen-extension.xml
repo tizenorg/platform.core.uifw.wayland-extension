@@ -319,15 +319,18 @@
     </enum>
 
     <enum name="direction">
+      <entry name="none" value="0"/>
       <entry name="down" value="1"/>
       <entry name="left" value="2"/>
-      <entry name="up" value="4"/>
-      <entry name="right" value="8"/>
+      <entry name="up" value="3"/>
+      <entry name="right" value="4"/>
     </enum>
 
     <request name="grab_swipe">
       <arg name="num_of_fingers" type="uint"/>
       <arg name="direction" type="uint"/>
+      <arg name="start_point" type="uint"/>
+      <arg name="end_point" type="uint"/>
     </request>
 
     <request name="ungrab_swipe">
